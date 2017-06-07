@@ -8,24 +8,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WinkelClient.WinkelService {
+namespace WinkelClient.WinkelServiceClient {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WinkelService.IWinkelService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WinkelServiceClient.IWinkelService")]
     public interface IWinkelService {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/Inloggen", ReplyAction="http://tempuri.org/IWinkelService/InloggenResponse")]
-        bool Inloggen(string gebruikersnaam, string wachtwoord);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/Inloggen", ReplyAction="http://tempuri.org/IWinkelService/InloggenResponse")]
-        System.Threading.Tasks.Task<bool> InloggenAsync(string gebruikersnaam, string wachtwoord);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/Registreren", ReplyAction="http://tempuri.org/IWinkelService/RegistrerenResponse")]
         bool Registreren(string gebruikersnaam, string wachtwoord);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/Registreren", ReplyAction="http://tempuri.org/IWinkelService/RegistrerenResponse")]
         System.Threading.Tasks.Task<bool> RegistrerenAsync(string gebruikersnaam, string wachtwoord);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/Inloggen", ReplyAction="http://tempuri.org/IWinkelService/InloggenResponse")]
+        bool Inloggen(string gebruikersnaam, string wachtwoord);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/Inloggen", ReplyAction="http://tempuri.org/IWinkelService/InloggenResponse")]
+        System.Threading.Tasks.Task<bool> InloggenAsync(string gebruikersnaam, string wachtwoord);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWinkelService/SaldoInformatie", ReplyAction="http://tempuri.org/IWinkelService/SaldoInformatieResponse")]
         double SaldoInformatie(string gebruikersnaam, string wachtwoord);
@@ -53,12 +53,12 @@ namespace WinkelClient.WinkelService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWinkelServiceChannel : WinkelClient.WinkelService.IWinkelService, System.ServiceModel.IClientChannel {
+    public interface IWinkelServiceChannel : WinkelClient.WinkelServiceClient.IWinkelService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WinkelServiceClient : System.ServiceModel.ClientBase<WinkelClient.WinkelService.IWinkelService>, WinkelClient.WinkelService.IWinkelService {
+    public partial class WinkelServiceClient : System.ServiceModel.ClientBase<WinkelClient.WinkelServiceClient.IWinkelService>, WinkelClient.WinkelServiceClient.IWinkelService {
         
         public WinkelServiceClient() {
         }
@@ -79,20 +79,20 @@ namespace WinkelClient.WinkelService {
                 base(binding, remoteAddress) {
         }
         
-        public bool Inloggen(string gebruikersnaam, string wachtwoord) {
-            return base.Channel.Inloggen(gebruikersnaam, wachtwoord);
-        }
-        
-        public System.Threading.Tasks.Task<bool> InloggenAsync(string gebruikersnaam, string wachtwoord) {
-            return base.Channel.InloggenAsync(gebruikersnaam, wachtwoord);
-        }
-        
         public bool Registreren(string gebruikersnaam, string wachtwoord) {
             return base.Channel.Registreren(gebruikersnaam, wachtwoord);
         }
         
         public System.Threading.Tasks.Task<bool> RegistrerenAsync(string gebruikersnaam, string wachtwoord) {
             return base.Channel.RegistrerenAsync(gebruikersnaam, wachtwoord);
+        }
+        
+        public bool Inloggen(string gebruikersnaam, string wachtwoord) {
+            return base.Channel.Inloggen(gebruikersnaam, wachtwoord);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InloggenAsync(string gebruikersnaam, string wachtwoord) {
+            return base.Channel.InloggenAsync(gebruikersnaam, wachtwoord);
         }
         
         public double SaldoInformatie(string gebruikersnaam, string wachtwoord) {

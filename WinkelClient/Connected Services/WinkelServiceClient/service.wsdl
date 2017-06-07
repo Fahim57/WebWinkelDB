@@ -6,17 +6,17 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IWinkelService_Inloggen_InputMessage">
-    <wsdl:part name="parameters" element="tns:Inloggen" />
-  </wsdl:message>
-  <wsdl:message name="IWinkelService_Inloggen_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InloggenResponse" />
-  </wsdl:message>
   <wsdl:message name="IWinkelService_Registreren_InputMessage">
     <wsdl:part name="parameters" element="tns:Registreren" />
   </wsdl:message>
   <wsdl:message name="IWinkelService_Registreren_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrerenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_Inloggen_InputMessage">
+    <wsdl:part name="parameters" element="tns:Inloggen" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelService_Inloggen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InloggenResponse" />
   </wsdl:message>
   <wsdl:message name="IWinkelService_SaldoInformatie_InputMessage">
     <wsdl:part name="parameters" element="tns:SaldoInformatie" />
@@ -43,13 +43,13 @@
     <wsdl:part name="parameters" element="tns:KoopHistoryResponse" />
   </wsdl:message>
   <wsdl:portType name="IWinkelService">
-    <wsdl:operation name="Inloggen">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/Inloggen" message="tns:IWinkelService_Inloggen_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/InloggenResponse" message="tns:IWinkelService_Inloggen_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="Registreren">
       <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/Registreren" message="tns:IWinkelService_Registreren_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/RegistrerenResponse" message="tns:IWinkelService_Registreren_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Inloggen">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/Inloggen" message="tns:IWinkelService_Inloggen_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWinkelService/InloggenResponse" message="tns:IWinkelService_Inloggen_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaldoInformatie">
       <wsdl:input wsaw:Action="http://tempuri.org/IWinkelService/SaldoInformatie" message="tns:IWinkelService_SaldoInformatie_InputMessage" />
@@ -70,8 +70,8 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IWinkelService" type="tns:IWinkelService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="Inloggen">
-      <soap:operation soapAction="http://tempuri.org/IWinkelService/Inloggen" style="document" />
+    <wsdl:operation name="Registreren">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/Registreren" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -79,8 +79,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Registreren">
-      <soap:operation soapAction="http://tempuri.org/IWinkelService/Registreren" style="document" />
+    <wsdl:operation name="Inloggen">
+      <soap:operation soapAction="http://tempuri.org/IWinkelService/Inloggen" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

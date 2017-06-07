@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,30 +48,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\WinkelService\Reference.cs">
+    <Compile Include="Connected Services\WinkelServiceClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Credentials.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Credentials.Designer.cs">
+      <DependentUpon>Credentials.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
+    <Compile Include="Historie.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Winkel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Winkel.Designer.cs">
+      <DependentUpon>Winkel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SessionHandler.cs" />
+    <EmbeddedResource Include="Credentials.resx">
+      <DependentUpon>Credentials.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Winkel.resx">
+      <DependentUpon>Winkel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,11 +85,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Connected Services\WinkelService\service.wsdl" />
-    <None Include="Connected Services\WinkelService\service.xsd">
+    <None Include="Connected Services\WinkelServiceClient\service.wsdl" />
+    <None Include="Connected Services\WinkelServiceClient\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WinkelService\service1.xsd">
+    <None Include="Connected Services\WinkelServiceClient\service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -105,16 +109,16 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WinkelService\" />
+    <WCFMetadataStorage Include="Connected Services\WinkelServiceClient\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WinkelService\configuration91.svcinfo" />
+    <None Include="Connected Services\WinkelServiceClient\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WinkelService\configuration.svcinfo" />
+    <None Include="Connected Services\WinkelServiceClient\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WinkelService\Reference.svcmap">
+    <None Include="Connected Services\WinkelServiceClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

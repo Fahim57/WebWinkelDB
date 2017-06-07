@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using WinkelServiceLibrary.DAO;
 using WinkelServiceLibrary.DAO.Hardcoded;
+using WinkelServiceLibrary.DAO.SQLServer;
 
 namespace WinkelServiceLibrary
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "WinkelService" in both code and config file together.
     public class WinkelService : IWinkelService
     {
-        public enum dataSet{
+        public enum dataSet
+        {
             HARDCODED,
             MSSQL
         }
@@ -35,6 +37,11 @@ namespace WinkelServiceLibrary
             {
                 productDao = new HCProduct();
                 gebruikerDao = new HCGebruiker();
+            }
+            else if (dataSource == dataSet.MSSQL)
+            {
+                productDao = new SQLProduct();
+                gebruikerDao = new SQLGebruiker();
             }
             else
                 throw new NotImplementedException();
@@ -103,11 +110,11 @@ namespace WinkelServiceLibrary
             var aankoopId = gebruikerDao.VerkrijgAankopen(gebruikersnaam);
             var aankoopLijst = new List<Tuple<String, double>>();
             var productLijst = ProductenVerkijgen();
-            for(int i = 0; i < aankoopId.Count; ++i)
+            for (int i = 0; i < aankoopId.Count; ++i)
             {
-                foreach(Product p in productDao.GetProducten())
+                foreach (Product p in productDao.GetProducten())
                 {
-                    if (p.id == aankoopId[i])
+                    if (p.Id == aankoopId[i])
                         aankoopLijst.Add(new Tuple<string, double>(p.naam, p.prijs));
                 }
             }

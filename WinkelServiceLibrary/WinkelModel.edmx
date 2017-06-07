@@ -4,113 +4,112 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WinkelDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AankoopRegels">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="aantal" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AankoopId" Type="int" Nullable="false" />
-          <Property Name="Product_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Aankopen">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="aankoopdatum" Type="datetime" Nullable="false" />
-          <Property Name="Gebruiker_Id" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Gebruikers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="gebruikernaam" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="wachtwoord" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="saldo" Type="float" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Producten">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="naam" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="prijs" Type="int" Nullable="false" />
-          <Property Name="aantal" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_AankoopAankoopRegel">
-          <End Role="Aankopen" Type="Self.Aankopen" Multiplicity="1" />
-          <End Role="AankoopRegels" Type="Self.AankoopRegels" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Aankopen">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AankoopRegels">
-              <PropertyRef Name="AankoopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AankoopRegelProduct">
-          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
-          <End Role="AankoopRegels" Type="Self.AankoopRegels" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producten">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AankoopRegels">
-              <PropertyRef Name="Product_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GebruikerAankoop">
-          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="1" />
-          <End Role="Aankopen" Type="Self.Aankopen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gebruikers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Aankopen">
-              <PropertyRef Name="Gebruiker_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="WinkelDBModelStoreContainer">
-          <EntitySet Name="AankoopRegels" EntityType="Self.AankoopRegels" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Aankopen" EntityType="Self.Aankopen" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gebruikers" EntityType="Self.Gebruikers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Producten" EntityType="Self.Producten" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_AankoopAankoopRegel" Association="Self.FK_AankoopAankoopRegel">
-            <End Role="Aankopen" EntitySet="Aankopen" />
-            <End Role="AankoopRegels" EntitySet="AankoopRegels" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AankoopRegelProduct" Association="Self.FK_AankoopRegelProduct">
-            <End Role="Producten" EntitySet="Producten" />
-            <End Role="AankoopRegels" EntitySet="AankoopRegels" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GebruikerAankoop" Association="Self.FK_GebruikerAankoop">
-            <End Role="Gebruikers" EntitySet="Gebruikers" />
-            <End Role="Aankopen" EntitySet="Aankopen" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="WinkelDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WinkelDBModelStoreContainer">
+    <EntitySet Name="AankoopRegelSet" EntityType="WinkelDBModel.Store.AankoopRegelSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AankoopSet" EntityType="WinkelDBModel.Store.AankoopSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GebruikerSet" EntityType="WinkelDBModel.Store.GebruikerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductSet" EntityType="WinkelDBModel.Store.ProductSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_AankoopAankoopRegel" Association="WinkelDBModel.Store.FK_AankoopAankoopRegel">
+      <End Role="Aankopen" EntitySet="AankoopSet" />
+      <End Role="AankoopRegels" EntitySet="AankoopRegelSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AankoopRegelProduct" Association="WinkelDBModel.Store.FK_AankoopRegelProduct">
+      <End Role="Producten" EntitySet="ProductSet" />
+      <End Role="AankoopRegels" EntitySet="AankoopRegelSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GebruikerAankoop" Association="WinkelDBModel.Store.FK_GebruikerAankoop">
+      <End Role="Gebruikers" EntitySet="GebruikerSet" />
+      <End Role="Aankopen" EntitySet="AankoopSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AankoopRegelSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aantal" Type="int" Nullable="false" />
+    <Property Name="AankoopId" Type="int" Nullable="false" />
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AankoopSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aankoopdatum" Type="datetime" Nullable="false" />
+    <Property Name="Gebruiker_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GebruikerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gebruikernaam" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="wachtwoord" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="saldo" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="naam" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="prijs" Type="float" Nullable="false" />
+    <Property Name="aantal" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AankoopAankoopRegel">
+    <End Role="Aankopen" Type="WinkelDBModel.Store.AankoopSet" Multiplicity="1" />
+    <End Role="AankoopRegels" Type="WinkelDBModel.Store.AankoopRegelSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aankopen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AankoopRegels">
+        <PropertyRef Name="AankoopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AankoopRegelProduct">
+    <End Role="Producten" Type="WinkelDBModel.Store.ProductSet" Multiplicity="1" />
+    <End Role="AankoopRegels" Type="WinkelDBModel.Store.AankoopRegelSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producten">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AankoopRegels">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GebruikerAankoop">
+    <End Role="Gebruikers" Type="WinkelDBModel.Store.GebruikerSet" Multiplicity="1" />
+    <End Role="Aankopen" Type="WinkelDBModel.Store.AankoopSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gebruikers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Aankopen">
+        <PropertyRef Name="Gebruiker_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WinkelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AankoopRegels">
+        <EntityType Name="AankoopRegel">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="aantal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="aantal" Type="Int32" Nullable="false" />
           <Property Name="AankoopId" Type="Int32" Nullable="false" />
           <Property Name="Product_Id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Aankopen" Relationship="Self.FK_AankoopAankoopRegel" FromRole="AankoopRegels" ToRole="Aankopen" />
           <NavigationProperty Name="Producten" Relationship="Self.FK_AankoopRegelProduct" FromRole="AankoopRegels" ToRole="Producten" />
         </EntityType>
-        <EntityType Name="Aankopen">
+        <EntityType Name="Aankoop">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -120,29 +119,29 @@
           <NavigationProperty Name="AankoopRegels" Relationship="Self.FK_AankoopAankoopRegel" FromRole="Aankopen" ToRole="AankoopRegels" />
           <NavigationProperty Name="Gebruikers" Relationship="Self.FK_GebruikerAankoop" FromRole="Aankopen" ToRole="Gebruikers" />
         </EntityType>
-        <EntityType Name="Gebruikers">
+        <EntityType Name="Gebruiker">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="gebruikernaam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gebruikersnaam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="wachtwoord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="saldo" Type="Double" Nullable="false" />
           <NavigationProperty Name="Aankopen" Relationship="Self.FK_GebruikerAankoop" FromRole="Gebruikers" ToRole="Aankopen" />
         </EntityType>
-        <EntityType Name="Producten">
+        <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="prijs" Type="Int32" Nullable="false" />
+          <Property Name="prijs" Type="Double" Nullable="false" />
           <Property Name="aantal" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AankoopRegels" Relationship="Self.FK_AankoopRegelProduct" FromRole="Producten" ToRole="AankoopRegels" />
         </EntityType>
         <Association Name="FK_AankoopAankoopRegel">
-          <End Role="Aankopen" Type="Self.Aankopen" Multiplicity="1" />
-          <End Role="AankoopRegels" Type="Self.AankoopRegels" Multiplicity="*" />
+          <End Role="Aankopen" Type="WinkelDBModel.Aankoop" Multiplicity="1" />
+          <End Role="AankoopRegels" Type="WinkelDBModel.AankoopRegel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aankopen">
               <PropertyRef Name="Id" />
@@ -153,8 +152,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AankoopRegelProduct">
-          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
-          <End Role="AankoopRegels" Type="Self.AankoopRegels" Multiplicity="*" />
+          <End Role="Producten" Type="WinkelDBModel.Product" Multiplicity="1" />
+          <End Role="AankoopRegels" Type="WinkelDBModel.AankoopRegel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producten">
               <PropertyRef Name="Id" />
@@ -165,8 +164,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GebruikerAankoop">
-          <End Role="Gebruikers" Type="Self.Gebruikers" Multiplicity="1" />
-          <End Role="Aankopen" Type="Self.Aankopen" Multiplicity="*" />
+          <End Role="Gebruikers" Type="WinkelDBModel.Gebruiker" Multiplicity="1" />
+          <End Role="Aankopen" Type="WinkelDBModel.Aankoop" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gebruikers">
               <PropertyRef Name="Id" />
@@ -177,71 +176,70 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WinkelModel" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AankoopRegels" EntityType="Self.AankoopRegels" />
-          <EntitySet Name="Aankopen" EntityType="Self.Aankopen" />
-          <EntitySet Name="Gebruikers" EntityType="Self.Gebruikers" />
-          <EntitySet Name="Producten" EntityType="Self.Producten" />
+          <EntitySet Name="AankoopRegelSet" EntityType="WinkelDBModel.AankoopRegel" />
+          <EntitySet Name="AankoopSet" EntityType="WinkelDBModel.Aankoop" />
+          <EntitySet Name="GebruikerSet" EntityType="WinkelDBModel.Gebruiker" />
+          <EntitySet Name="ProductSet" EntityType="WinkelDBModel.Product" />
           <AssociationSet Name="FK_AankoopAankoopRegel" Association="Self.FK_AankoopAankoopRegel">
-            <End Role="Aankopen" EntitySet="Aankopen" />
-            <End Role="AankoopRegels" EntitySet="AankoopRegels" />
+            <End Role="Aankopen" EntitySet="AankoopSet" />
+            <End Role="AankoopRegels" EntitySet="AankoopRegelSet" />
           </AssociationSet>
           <AssociationSet Name="FK_AankoopRegelProduct" Association="Self.FK_AankoopRegelProduct">
-            <End Role="Producten" EntitySet="Producten" />
-            <End Role="AankoopRegels" EntitySet="AankoopRegels" />
+            <End Role="Producten" EntitySet="ProductSet" />
+            <End Role="AankoopRegels" EntitySet="AankoopRegelSet" />
           </AssociationSet>
           <AssociationSet Name="FK_GebruikerAankoop" Association="Self.FK_GebruikerAankoop">
-            <End Role="Gebruikers" EntitySet="Gebruikers" />
-            <End Role="Aankopen" EntitySet="Aankopen" />
+            <End Role="Gebruikers" EntitySet="GebruikerSet" />
+            <End Role="Aankopen" EntitySet="AankoopSet" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WinkelDBModelStoreContainer" CdmEntityContainer="WinkelModel">
-          <EntitySetMapping Name="AankoopRegels">
-            <EntityTypeMapping TypeName="WinkelDBModel.AankoopRegels">
-              <MappingFragment StoreEntitySet="AankoopRegels">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="aantal" ColumnName="aantal" />
-                <ScalarProperty Name="AankoopId" ColumnName="AankoopId" />
-                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Aankopen">
-            <EntityTypeMapping TypeName="WinkelDBModel.Aankopen">
-              <MappingFragment StoreEntitySet="Aankopen">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="aankoopdatum" ColumnName="aankoopdatum" />
-                <ScalarProperty Name="Gebruiker_Id" ColumnName="Gebruiker_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gebruikers">
-            <EntityTypeMapping TypeName="WinkelDBModel.Gebruikers">
-              <MappingFragment StoreEntitySet="Gebruikers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="gebruikernaam" ColumnName="gebruikernaam" />
-                <ScalarProperty Name="wachtwoord" ColumnName="wachtwoord" />
-                <ScalarProperty Name="saldo" ColumnName="saldo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Producten">
-            <EntityTypeMapping TypeName="WinkelDBModel.Producten">
-              <MappingFragment StoreEntitySet="Producten">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="naam" ColumnName="naam" />
-                <ScalarProperty Name="prijs" ColumnName="prijs" />
-                <ScalarProperty Name="aantal" ColumnName="aantal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WinkelDBModelStoreContainer" CdmEntityContainer="WinkelModel">
+    <EntitySetMapping Name="AankoopRegelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.AankoopRegel)">
+        <MappingFragment StoreEntitySet="AankoopRegelSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="aantal" ColumnName="aantal" />
+          <ScalarProperty Name="AankoopId" ColumnName="AankoopId" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AankoopSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Aankoop)">
+        <MappingFragment StoreEntitySet="AankoopSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="aankoopdatum" ColumnName="aankoopdatum" />
+          <ScalarProperty Name="Gebruiker_Id" ColumnName="Gebruiker_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GebruikerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Gebruiker)">
+        <MappingFragment StoreEntitySet="GebruikerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="gebruikersnaam" ColumnName="gebruikernaam" />
+          <ScalarProperty Name="wachtwoord" ColumnName="wachtwoord" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Product)">
+        <MappingFragment StoreEntitySet="ProductSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="naam" ColumnName="naam" />
+          <ScalarProperty Name="prijs" ColumnName="prijs" />
+          <ScalarProperty Name="aantal" ColumnName="aantal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -255,7 +253,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

@@ -54,23 +54,25 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AankoopRegels.cs">
+    <Compile Include="Aankoop.cs">
       <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Aankopen.cs">
+    <Compile Include="AankoopRegel.cs">
       <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAO\Hardcoded\HCGebruiker.cs" />
     <Compile Include="DAO\Hardcoded\HCProduct.cs" />
     <Compile Include="DAO\IGebruiker.cs" />
     <Compile Include="DAO\IProduct.cs" />
-    <Compile Include="Gebruikers.cs">
+    <Compile Include="DAO\Objecten\Gebruiker.cs" />
+    <Compile Include="DAO\Objecten\Product.cs" />
+    <Compile Include="DAO\SQLServer\SQLGebruiker.cs" />
+    <Compile Include="DAO\SQLServer\SQLProduct.cs" />
+    <Compile Include="Gebruiker.cs">
       <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Objecten\Gebruiker.cs" />
     <Compile Include="IWinkelService.cs" />
-    <Compile Include="Objecten\Product.cs" />
-    <Compile Include="Producten.cs">
+    <Compile Include="Product.cs">
       <DependentUpon>WinkelModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,15 +106,14 @@
       <DependentUpon>WinkelModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAO\SQLServer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="WinkelModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>WinkelModel.Context.cs</LastGenOutput>
       <DependentUpon>WinkelModel.edmx</DependentUpon>
     </Content>
+    <Content Include="WinkelModel.edmx.sql" />
     <Content Include="WinkelModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WinkelModel.edmx</DependentUpon>

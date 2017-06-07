@@ -12,20 +12,20 @@ namespace WinkelServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class Aankopen
+    public partial class Gebruiker
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Aankopen()
+        public Gebruiker()
         {
-            this.AankoopRegels = new HashSet<AankoopRegels>();
+            this.Aankopen = new HashSet<Aankoop>();
         }
     
         public int Id { get; set; }
-        public System.DateTime aankoopdatum { get; set; }
-        public int Gebruiker_Id { get; set; }
+        public string gebruikersnaam { get; set; }
+        public string wachtwoord { get; set; }
+        public double saldo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AankoopRegels> AankoopRegels { get; set; }
-        public virtual Gebruikers Gebruikers { get; set; }
+        public virtual ICollection<Aankoop> Aankopen { get; set; }
     }
 }
