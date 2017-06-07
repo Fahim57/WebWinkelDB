@@ -13,29 +13,40 @@ namespace WinkelServiceLibrary.DAO.SQLServer
             List<Product> producten = new List<Product>();
             using (WinkelModel db = new WinkelModel())
             {
-              //  var products = from p in db.Producten
-              //                 select p;
+                var products = from p in db.ProductSet
+                               select p;
                 //foreach (Product p in products)
                 //{
                 //    Product x = new 
                 //}
             }
-            throw new NotImplementedException();
+            return producten;
         }
 
         public bool VerkoopProduct(int productId, int aantal)
         {
-            throw new NotImplementedException();
+            using (WinkelModel db = new WinkelModel())
+            {
+            }
+                throw new NotImplementedException();
         }
 
         public int VerkrijgAantal(int productId)
         {
-            throw new NotImplementedException();
+            using (WinkelModel db = new WinkelModel())
+            {
+                WinkelServiceLibrary.Product product = db.ProductSet.Single(p => p.Id == productId);
+                return product.aantal;
+            }
         }
 
         public double VerkrijgPrijs(int productId)
         {
-            throw new NotImplementedException();
+            using (WinkelModel db = new WinkelModel())
+            {
+                WinkelServiceLibrary.Product product = db.ProductSet.Single(p => p.Id == productId);
+                return product.prijs;
+            }
         }
     }
 }

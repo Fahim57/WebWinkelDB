@@ -45,7 +45,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="gebruikernaam" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="gebruikersnaam" Type="nvarchar(max)" Nullable="false" />
     <Property Name="wachtwoord" Type="nvarchar(max)" Nullable="false" />
     <Property Name="saldo" Type="float" Nullable="false" />
   </EntityType>
@@ -127,7 +127,6 @@
           <Property Name="gebruikersnaam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="wachtwoord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="saldo" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Aankopen" Relationship="Self.FK_GebruikerAankoop" FromRole="Gebruikers" ToRole="Aankopen" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -137,7 +136,6 @@
           <Property Name="naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="prijs" Type="Double" Nullable="false" />
           <Property Name="aantal" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AankoopRegels" Relationship="Self.FK_AankoopRegelProduct" FromRole="Producten" ToRole="AankoopRegels" />
         </EntityType>
         <Association Name="FK_AankoopAankoopRegel">
           <End Role="Aankopen" Type="WinkelDBModel.Aankoop" Multiplicity="1" />
@@ -222,7 +220,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Gebruiker)">
         <MappingFragment StoreEntitySet="GebruikerSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="gebruikersnaam" ColumnName="gebruikernaam" />
+          <ScalarProperty Name="gebruikersnaam" ColumnName="gebruikersnaam" />
           <ScalarProperty Name="wachtwoord" ColumnName="wachtwoord" />
           <ScalarProperty Name="saldo" ColumnName="saldo" />
         </MappingFragment>

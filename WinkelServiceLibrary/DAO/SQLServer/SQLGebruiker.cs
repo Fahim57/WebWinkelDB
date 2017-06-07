@@ -12,7 +12,7 @@ namespace WinkelServiceLibrary.DAO.SQLServer
         {
             using (WinkelModel db = new WinkelModel())
             {
-                Gebruiker gebruiker = db.GebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam && g.wachtwoord == wachtwoord);
+                WinkelServiceLibrary.Gebruiker gebruiker = db.GebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam && g.wachtwoord == wachtwoord);
                 if (gebruiker != null)
                     return true;
                 else
@@ -24,8 +24,9 @@ namespace WinkelServiceLibrary.DAO.SQLServer
         {
             using (WinkelModel db = new WinkelModel())
             {
-                Product product = db.ProductSet.Single(p => p.Id == productid);
-                Gebruiker gebruiker = db.GebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam);
+                WinkelServiceLibrary.Product product = db.ProductSet.Single(p => p.Id == productid);
+
+                WinkelServiceLibrary.Gebruiker gebruiker = db.GebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam);
                 if (product.aantal < tal)
                     return false;
                 else
@@ -48,7 +49,7 @@ namespace WinkelServiceLibrary.DAO.SQLServer
         {
             using (WinkelModel db = new WinkelModel())
             {
-                Gebruiker gr = new Gebruiker { gebruikersnaam = gebruikersnaam, wachtwoord = wachtwoord };
+                WinkelServiceLibrary.Gebruiker gr = new WinkelServiceLibrary.Gebruiker { gebruikersnaam = gebruikersnaam, wachtwoord = wachtwoord, saldo = 100 };
                 db.GebruikerSet.Add(gr);
                 db.SaveChanges();
                 return true;

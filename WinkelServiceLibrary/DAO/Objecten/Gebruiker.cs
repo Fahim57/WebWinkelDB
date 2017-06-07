@@ -9,6 +9,8 @@ namespace WinkelServiceLibrary.DAO
     class Gebruiker
     {
         public List<int> aankopen;
+
+        public int Id { get; set; }
         public string gebruikersnaam { get; set; }
         public string wachtwoord { get; set; }
         public double saldo { get; set; }
@@ -17,5 +19,6 @@ namespace WinkelServiceLibrary.DAO
         {
             aankopen = new List<int>();
         }
+       // public virtual ICollection<Aankoop> Aankopen { get; set; }
     }
 }

@@ -14,18 +14,9 @@ namespace WinkelServiceLibrary
     
     public partial class Product
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
-        {
-            this.AankoopRegels = new HashSet<AankoopRegel>();
-        }
-    
         public int Id { get; set; }
         public string naam { get; set; }
         public double prijs { get; set; }
         public int aantal { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AankoopRegel> AankoopRegels { get; set; }
     }
 }

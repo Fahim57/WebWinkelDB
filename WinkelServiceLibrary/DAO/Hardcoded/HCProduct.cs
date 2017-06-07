@@ -23,7 +23,7 @@ namespace WinkelServiceLibrary.DAO.Hardcoded
         {
             foreach (Product p in producten)
             {
-                if(id == p.id)
+                if(id == p.Id)
                     return p;
             }
 

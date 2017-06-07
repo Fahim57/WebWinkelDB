@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/07/2017 22:15:39
+-- Date Created: 06/08/2017 00:40:04
 -- Generated from EDMX file: D:\ICT\C# Projecten\WebWinkel\WinkelServiceLibrary\WinkelModel.edmx
 -- --------------------------------------------------
 

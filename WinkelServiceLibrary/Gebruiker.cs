@@ -14,18 +14,9 @@ namespace WinkelServiceLibrary
     
     public partial class Gebruiker
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Gebruiker()
-        {
-            this.Aankopen = new HashSet<Aankoop>();
-        }
-    
         public int Id { get; set; }
         public string gebruikersnaam { get; set; }
         public string wachtwoord { get; set; }
         public double saldo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Aankoop> Aankopen { get; set; }
     }
 }

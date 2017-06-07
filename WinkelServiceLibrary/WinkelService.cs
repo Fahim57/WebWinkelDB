@@ -112,10 +112,12 @@ namespace WinkelServiceLibrary
             var productLijst = ProductenVerkijgen();
             for (int i = 0; i < aankoopId.Count; ++i)
             {
-                foreach (Product p in productDao.GetProducten())
+                // Heb verwijst naar DAO.Product
+                foreach(DAO.Product p in productDao.GetProducten())
                 {
                     if (p.Id == aankoopId[i])
                         aankoopLijst.Add(new Tuple<string, double>(p.naam, p.prijs));
+
                 }
             }
 

@@ -81,7 +81,7 @@ namespace WinkelServiceLibrary.DAO.Hardcoded
                 return false;
 
             for (int i = 0; i < aantal; ++i)
-                g.Aankopen.Add(productid);
+                g.aankopen.Add(productid);
 
             g.saldo -= prijs * aantal;
 
