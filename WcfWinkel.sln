@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinkelServiceLibrary", "WinkelServiceLibrary\WinkelServiceLibrary.csproj", "{AD443297-6372-41D8-A964-86D893DD5D84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinkelClient", "WinkelClient\WinkelClient.csproj", "{09CCCD22-BCD8-4115-90DC-D683EDF3576E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AD443297-6372-41D8-A964-86D893DD5D84} = {AD443297-6372-41D8-A964-86D893DD5D84}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD443297-6372-41D8-A964-86D893DD5D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD443297-6372-41D8-A964-86D893DD5D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD443297-6372-41D8-A964-86D893DD5D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD443297-6372-41D8-A964-86D893DD5D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09CCCD22-BCD8-4115-90DC-D683EDF3576E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09CCCD22-BCD8-4115-90DC-D683EDF3576E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09CCCD22-BCD8-4115-90DC-D683EDF3576E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09CCCD22-BCD8-4115-90DC-D683EDF3576E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
