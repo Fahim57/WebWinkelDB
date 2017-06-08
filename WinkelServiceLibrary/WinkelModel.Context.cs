@@ -25,9 +25,9 @@ namespace WinkelServiceLibrary
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AankoopRegel> AankoopRegelSet { get; set; }
-        public virtual DbSet<Aankoop> AankoopSet { get; set; }
-        public virtual DbSet<Gebruiker> GebruikerSet { get; set; }
-        public virtual DbSet<Product> ProductSet { get; set; }
+        public virtual DbSet<tbAankoopRegel> tbAankoopRegelSet { get; set; }
+        public virtual DbSet<tbAankoop> tbAankoopSet { get; set; }
+        public virtual DbSet<tbGebruiker> tbGebruikerSet { get; set; }
+        public virtual DbSet<tbProduct> tbProductSet { get; set; }
     }
 }

@@ -19,6 +19,5 @@ namespace WinkelServiceLibrary.DAO
         {
             aankopen = new List<int>();
         }
-       // public virtual ICollection<Aankoop> Aankopen { get; set; }
     }
 }

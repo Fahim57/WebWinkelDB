@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2af1a1a917054d9dbb58ed2ac44cdfc3" Name="Diagram1">
-        <EntityTypeShape EntityType="WinkelDBModel.AankoopRegel" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WinkelDBModel.Aankoop" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WinkelDBModel.Gebruiker" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WinkelDBModel.Product" Width="1.5" PointX="7.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelDBModel.tbAankoopRegel" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelDBModel.tbAankoop" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelDBModel.tbGebruiker" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelDBModel.tbProduct" Width="1.5" PointX="7.25" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="WinkelDBModel.FK_AankoopAankoopRegel" ManuallyRouted="false" />
         <AssociationConnector Association="WinkelDBModel.FK_AankoopRegelProduct" ManuallyRouted="false" />
         <AssociationConnector Association="WinkelDBModel.FK_GebruikerAankoop" ManuallyRouted="false" />

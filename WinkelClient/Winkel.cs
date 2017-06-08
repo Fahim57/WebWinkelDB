@@ -25,7 +25,10 @@ namespace WinkelClient
             var res = SessionHandler.webClient.ProductenVerkijgen();
             var productList = jsonSerializer.Deserialize<List<Product>>(res);
             foreach (Product p in productList)
-                productenBox.Rows.Add(p.id, p.naam, p.prijs, p.aantal);
+            {
+                if(p.aantal > 0)
+                    productenBox.Rows.Add(p.id, p.naam, p.prijs, p.aantal);
+            }
 
             res = SessionHandler.webClient.KoopHistory(SessionHandler.gebruikersnaam, SessionHandler.wachtwoord);
             var historieList = jsonSerializer.Deserialize<List<Historie>>(res);
@@ -55,6 +58,18 @@ namespace WinkelClient
             if(productenBox.SelectedRows.Count != 1)
             {
                 MessageBox.Show("Er moet 1 product geselecteerd zijn!", "Fout", MessageBoxButtons.OK);
+                return;
+            }
+
+            if((int)productenBox.SelectedRows[0].Cells[3].Value < (int)aantalSelector.Value)
+            {
+                MessageBox.Show("Niet genoeg in voorraad!", "Fout", MessageBoxButtons.OK);
+                return;
+            }
+
+            if ((double)productenBox.SelectedRows[0].Cells[2].Value * (int)aantalSelector.Value > Double.Parse(saldoLabel.Text))
+            {
+                MessageBox.Show("Uw saldo is te laag!", "Fout", MessageBoxButtons.OK);
                 return;
             }
 

@@ -98,7 +98,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WinkelDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AankoopRegel">
+        <EntityType Name="tbAankoopRegel">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -109,7 +109,7 @@
           <NavigationProperty Name="Aankopen" Relationship="Self.FK_AankoopAankoopRegel" FromRole="AankoopRegels" ToRole="Aankopen" />
           <NavigationProperty Name="Producten" Relationship="Self.FK_AankoopRegelProduct" FromRole="AankoopRegels" ToRole="Producten" />
         </EntityType>
-        <EntityType Name="Aankoop">
+        <EntityType Name="tbAankoop">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -119,7 +119,7 @@
           <NavigationProperty Name="AankoopRegels" Relationship="Self.FK_AankoopAankoopRegel" FromRole="Aankopen" ToRole="AankoopRegels" />
           <NavigationProperty Name="Gebruikers" Relationship="Self.FK_GebruikerAankoop" FromRole="Aankopen" ToRole="Gebruikers" />
         </EntityType>
-        <EntityType Name="Gebruiker">
+        <EntityType Name="tbGebruiker">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -128,7 +128,7 @@
           <Property Name="wachtwoord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="saldo" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="tbProduct">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -138,8 +138,8 @@
           <Property Name="aantal" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_AankoopAankoopRegel">
-          <End Role="Aankopen" Type="WinkelDBModel.Aankoop" Multiplicity="1" />
-          <End Role="AankoopRegels" Type="WinkelDBModel.AankoopRegel" Multiplicity="*" />
+          <End Role="Aankopen" Type="WinkelDBModel.tbAankoop" Multiplicity="1" />
+          <End Role="AankoopRegels" Type="WinkelDBModel.tbAankoopRegel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Aankopen">
               <PropertyRef Name="Id" />
@@ -150,8 +150,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AankoopRegelProduct">
-          <End Role="Producten" Type="WinkelDBModel.Product" Multiplicity="1" />
-          <End Role="AankoopRegels" Type="WinkelDBModel.AankoopRegel" Multiplicity="*" />
+          <End Role="Producten" Type="WinkelDBModel.tbProduct" Multiplicity="1" />
+          <End Role="AankoopRegels" Type="WinkelDBModel.tbAankoopRegel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producten">
               <PropertyRef Name="Id" />
@@ -162,8 +162,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GebruikerAankoop">
-          <End Role="Gebruikers" Type="WinkelDBModel.Gebruiker" Multiplicity="1" />
-          <End Role="Aankopen" Type="WinkelDBModel.Aankoop" Multiplicity="*" />
+          <End Role="Gebruikers" Type="WinkelDBModel.tbGebruiker" Multiplicity="1" />
+          <End Role="Aankopen" Type="WinkelDBModel.tbAankoop" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gebruikers">
               <PropertyRef Name="Id" />
@@ -174,21 +174,21 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WinkelModel" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AankoopRegelSet" EntityType="WinkelDBModel.AankoopRegel" />
-          <EntitySet Name="AankoopSet" EntityType="WinkelDBModel.Aankoop" />
-          <EntitySet Name="GebruikerSet" EntityType="WinkelDBModel.Gebruiker" />
-          <EntitySet Name="ProductSet" EntityType="WinkelDBModel.Product" />
+          <EntitySet Name="tbAankoopRegelSet" EntityType="WinkelDBModel.tbAankoopRegel" />
+          <EntitySet Name="tbAankoopSet" EntityType="WinkelDBModel.tbAankoop" />
+          <EntitySet Name="tbGebruikerSet" EntityType="WinkelDBModel.tbGebruiker" />
+          <EntitySet Name="tbProductSet" EntityType="WinkelDBModel.tbProduct" />
           <AssociationSet Name="FK_AankoopAankoopRegel" Association="Self.FK_AankoopAankoopRegel">
-            <End Role="Aankopen" EntitySet="AankoopSet" />
-            <End Role="AankoopRegels" EntitySet="AankoopRegelSet" />
+            <End Role="Aankopen" EntitySet="tbAankoopSet" />
+            <End Role="AankoopRegels" EntitySet="tbAankoopRegelSet" />
           </AssociationSet>
           <AssociationSet Name="FK_AankoopRegelProduct" Association="Self.FK_AankoopRegelProduct">
-            <End Role="Producten" EntitySet="ProductSet" />
-            <End Role="AankoopRegels" EntitySet="AankoopRegelSet" />
+            <End Role="Producten" EntitySet="tbProductSet" />
+            <End Role="AankoopRegels" EntitySet="tbAankoopRegelSet" />
           </AssociationSet>
           <AssociationSet Name="FK_GebruikerAankoop" Association="Self.FK_GebruikerAankoop">
-            <End Role="Gebruikers" EntitySet="GebruikerSet" />
-            <End Role="Aankopen" EntitySet="AankoopSet" />
+            <End Role="Gebruikers" EntitySet="tbGebruikerSet" />
+            <End Role="Aankopen" EntitySet="tbAankoopSet" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -197,8 +197,8 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="WinkelDBModelStoreContainer" CdmEntityContainer="WinkelModel">
-    <EntitySetMapping Name="AankoopRegelSet">
-      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.AankoopRegel)">
+    <EntitySetMapping Name="tbAankoopRegelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.tbAankoopRegel)">
         <MappingFragment StoreEntitySet="AankoopRegelSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="aantal" ColumnName="aantal" />
@@ -207,8 +207,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AankoopSet">
-      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Aankoop)">
+    <EntitySetMapping Name="tbAankoopSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.tbAankoop)">
         <MappingFragment StoreEntitySet="AankoopSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="aankoopdatum" ColumnName="aankoopdatum" />
@@ -216,8 +216,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GebruikerSet">
-      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Gebruiker)">
+    <EntitySetMapping Name="tbGebruikerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.tbGebruiker)">
         <MappingFragment StoreEntitySet="GebruikerSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="gebruikersnaam" ColumnName="gebruikersnaam" />
@@ -226,8 +226,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProductSet">
-      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.Product)">
+    <EntitySetMapping Name="tbProductSet">
+      <EntityTypeMapping TypeName="IsTypeOf(WinkelDBModel.tbProduct)">
         <MappingFragment StoreEntitySet="ProductSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="naam" ColumnName="naam" />

@@ -56,7 +56,7 @@ namespace WinkelServiceLibrary.DAO.Hardcoded
 
             // Maak een nieuwe gebruiker aan binnen het systeem
             g = new Gebruiker();
-            g.saldo = 100;
+            g.saldo = 1000;
             g.gebruikersnaam = gebruikersnaam;
             g.wachtwoord = wachtwoord;
             gebruikers.Add(g);

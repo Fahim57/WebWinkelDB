@@ -32,12 +32,5 @@ namespace WinkelServiceLibrary.DAO
             if(id >= s_id)
                 s_id = id += 1;
         }
-
-        public override string ToString()
-        {
-            return "Het product is " + naam + " en kost " + prijs + " euro.\n";
-        }
-
-        //public virtual ICollection<AankoopRegel> AankoopRegels { get; set; }
     }
 }

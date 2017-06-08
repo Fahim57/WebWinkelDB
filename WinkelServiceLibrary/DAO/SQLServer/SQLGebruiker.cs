@@ -10,13 +10,20 @@ namespace WinkelServiceLibrary.DAO.SQLServer
     {
         public bool ControleerCredentials(string gebruikersnaam, string wachtwoord)
         {
-            using (WinkelModel db = new WinkelModel())
+            try
             {
-                WinkelServiceLibrary.Gebruiker gebruiker = db.GebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam && g.wachtwoord == wachtwoord);
-                if (gebruiker != null)
-                    return true;
-                else
-                    return false;
+                using (WinkelModel db = new WinkelModel())
+                {
+                    WinkelServiceLibrary.tbGebruiker gebruiker = db.tbGebruikerSet.Single(g => g.gebruikersnaam.ToLower() == gebruikersnaam.ToLower() && g.wachtwoord == wachtwoord);
+                    if (gebruiker != null)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
 
@@ -24,19 +31,19 @@ namespace WinkelServiceLibrary.DAO.SQLServer
         {
             using (WinkelModel db = new WinkelModel())
             {
-                WinkelServiceLibrary.Product product = db.ProductSet.Single(p => p.Id == productid);
+                WinkelServiceLibrary.tbProduct product = db.tbProductSet.Single(p => p.Id == productid);
 
-                WinkelServiceLibrary.Gebruiker gebruiker = db.GebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam);
+                WinkelServiceLibrary.tbGebruiker gebruiker = db.tbGebruikerSet.Single(g => g.gebruikersnaam == gebruikersnaam);
                 if (product.aantal < tal)
                     return false;
                 else
                 {
                     product.aantal = product.aantal - tal;
-                    AankoopRegel ar = new AankoopRegel { Product_Id = productid , aantal = tal };
+                    tbAankoopRegel ar = new tbAankoopRegel { Product_Id = productid , aantal = tal };
                    
-                    Aankoop ak = new Aankoop { Gebruiker_Id = gebruiker.Id , aankoopdatum = DateTime.Today };
+                    tbAankoop ak = new tbAankoop { Gebruiker_Id = gebruiker.Id , aankoopdatum = DateTime.Today };
                     ak.AankoopRegels.Add(ar);
-                    db.AankoopSet.Add(ak);
+                    db.tbAankoopSet.Add(ak);
                     db.SaveChanges();
                     return true;
                 }
@@ -45,20 +52,59 @@ namespace WinkelServiceLibrary.DAO.SQLServer
 
         }
 
+        private bool BestaatGebruiker(string gebruikersnaam)
+        {
+            try
+            {
+                using (WinkelModel db = new WinkelModel())
+                {
+                    WinkelServiceLibrary.tbGebruiker gebruiker = db.tbGebruikerSet.Single(g => g.gebruikersnaam.ToLower() == gebruikersnaam.ToLower());
+                    if (gebruiker != null)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool Registreer(string gebruikersnaam, string wachtwoord)
         {
-            using (WinkelModel db = new WinkelModel())
+            try
             {
-                WinkelServiceLibrary.Gebruiker gr = new WinkelServiceLibrary.Gebruiker { gebruikersnaam = gebruikersnaam, wachtwoord = wachtwoord, saldo = 100 };
-                db.GebruikerSet.Add(gr);
-                db.SaveChanges();
-                return true;
+                using (WinkelModel db = new WinkelModel())
+                {
+                    if (BestaatGebruiker(gebruikersnaam))
+                        return false;
+
+                    WinkelServiceLibrary.tbGebruiker gr = new WinkelServiceLibrary.tbGebruiker { gebruikersnaam = gebruikersnaam, wachtwoord = wachtwoord, saldo = 100 };
+                    db.tbGebruikerSet.Add(gr);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
 
         public List<int> VerkrijgAankopen(string gebruikersnaam)
         {
-            throw new NotImplementedException();
+            List<int> producten = new List<int>();
+            using (WinkelModel db = new WinkelModel())
+            {
+                var products = from p in db.tbProductSet
+                               select p;
+
+                foreach (var p in products)
+                    producten.Add(p.Id);
+            }
+
+            return producten;
         }
 
         public double VerkrijgSaldo(string gebruikersnaam)

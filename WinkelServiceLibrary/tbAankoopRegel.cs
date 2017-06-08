@@ -12,14 +12,14 @@ namespace WinkelServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class AankoopRegel
+    public partial class tbAankoopRegel
     {
         public int Id { get; set; }
         public int aantal { get; set; }
         public int AankoopId { get; set; }
         public int Product_Id { get; set; }
     
-        public virtual Aankoop Aankopen { get; set; }
-        public virtual Product Producten { get; set; }
+        public virtual tbAankoop Aankopen { get; set; }
+        public virtual tbProduct Producten { get; set; }
     }
 }

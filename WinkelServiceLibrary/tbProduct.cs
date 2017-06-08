@@ -12,7 +12,7 @@ namespace WinkelServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class tbProduct
     {
         public int Id { get; set; }
         public string naam { get; set; }

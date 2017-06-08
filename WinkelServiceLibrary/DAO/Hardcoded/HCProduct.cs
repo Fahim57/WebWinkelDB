@@ -13,9 +13,9 @@ namespace WinkelServiceLibrary.DAO.Hardcoded
         public HCProduct()
         {
             producten = new List<Product>();
-            producten.Add(new Product("iPad Pro", 15.6, 15));
+            producten.Add(new Product("iPad Pro", 159.6, 15));
             producten.Add(new Product("iPad Mini", 35.70, 12));
-            producten.Add(new Product("Galaxy S8", 70.50, 7));
+            producten.Add(new Product("Galaxy S8", 3.2, 7));
         }
 
         // Local
