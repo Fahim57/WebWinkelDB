@@ -31,7 +31,7 @@ namespace WinkelServiceLibrary
             if (bInitializedDao)
                 return;
 
-            var dataSource = dataSet.HARDCODED;
+            var dataSource = dataSet.MSSQL;
 
             if (dataSource == dataSet.HARDCODED)
             {

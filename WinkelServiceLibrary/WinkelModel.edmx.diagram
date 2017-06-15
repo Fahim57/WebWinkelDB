@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="WinkelDBModel.tbAankoopRegel" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="WinkelDBModel.tbAankoop" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="WinkelDBModel.tbGebruiker" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="WinkelDBModel.tbProduct" Width="1.5" PointX="7.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WinkelDBModel.tbProduct" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="WinkelDBModel.FK_AankoopAankoopRegel" ManuallyRouted="false" />
         <AssociationConnector Association="WinkelDBModel.FK_AankoopRegelProduct" ManuallyRouted="false" />
         <AssociationConnector Association="WinkelDBModel.FK_GebruikerAankoop" ManuallyRouted="false" />

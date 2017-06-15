@@ -30,15 +30,24 @@ namespace WinkelServiceLibrary.DAO.SQLServer
         {
             using (WinkelModel db = new WinkelModel())
             {
+                tbProduct product = db.tbProductSet.Single(p => p.Id == productId);
+                if (product == null)
+                    return false;
+
+                if (product.aantal < aantal)
+                    return false;
+
+                product.aantal -= aantal;
+
+                return true;
             }
-                throw new NotImplementedException();
         }
 
         public int VerkrijgAantal(int productId)
         {
             using (WinkelModel db = new WinkelModel())
             {
-                WinkelServiceLibrary.tbProduct product = db.tbProductSet.Single(p => p.Id == productId);
+                tbProduct product = db.tbProductSet.Single(p => p.Id == productId);
                 return product.aantal;
             }
         }
@@ -47,7 +56,7 @@ namespace WinkelServiceLibrary.DAO.SQLServer
         {
             using (WinkelModel db = new WinkelModel())
             {
-                WinkelServiceLibrary.tbProduct product = db.tbProductSet.Single(p => p.Id == productId);
+                tbProduct product = db.tbProductSet.Single(p => p.Id == productId);
                 return product.prijs;
             }
         }
